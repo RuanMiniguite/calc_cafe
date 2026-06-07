@@ -358,9 +358,9 @@ class _HomePageState extends State<HomePage> {
 
     salvarCampos();
 
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (_) => ResultadoPage(pilagem: pilagem)),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => ResultadoPage(pilagem: pilagem)),
+    );
   }
 }
