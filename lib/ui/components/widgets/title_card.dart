@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TitleCard extends StatelessWidget{
+  final String title;
+  
   const TitleCard({
     super.key,
     required this.title,
   });
-  final String title;
 
   @override
   Widget build(BuildContext context) {
