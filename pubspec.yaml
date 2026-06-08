@@ -41,13 +41,39 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.6
+  flutter_lints: ^6.0.0
+
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+
+  image_path: "assets/img/logo.png"
+
+adaptive_icon_background: "#FFFFFF"
+adaptive_icon_foreground: "assets/img/logo2.png"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+
+  image: assets/img/logo2.png
+
+  android_12:
+    image: assets/img/logo2.png
+    color: "#FFFFFF"
+    color_dark: "#FFFFFF"
+
+  fullscreen: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^6.0.0
+
 flutter:
 
   # The following line ensures that the Material Icons font is
