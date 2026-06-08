@@ -315,7 +315,7 @@ class _HomePageState extends State<HomePage> {
         taraController.text.trim().isEmpty ||
         percentualColonoController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Preencha todos os campos obrigatórios')),
+        const SnackBar(content: Text('Preencha todos os campos obrigatórios!')),
       );
       return;
     }
