@@ -74,13 +74,18 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   ),
 
                   InfoRow(
-                    title: "Preço do Café",
+                    title: "Valor da Saca de Café",
                     value: "R\$ ${dados.precoCafe.toStringAsFixed(2)}",
                   ),
 
                   InfoRow(
-                    title: "Valor 1kg café",
+                    title: "Valor de 1kg Café",
                     value: "R\$ ${valor1kgcafe(dados.precoCafe).toStringAsFixed(2)}",
+                  ),
+
+                  InfoRow(
+                    title: "Valor da Pilagem",
+                    value: "R\$ ${dados.valorPilagem.toStringAsFixed(2)}",
                   ),
 
                   InfoRow(
@@ -129,17 +134,12 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   ),
 
                   InfoRow(
-                    title: "Valor da Pilagem",
-                    value: "R\$ ${dados.valorPilagem.toStringAsFixed(2)}",
-                  ),
-
-                  InfoRow(
-                    title: "Peso Total bruto",
+                    title: "Peso Total (Bruto)",
                     value: "${dados.pesoTotal.toStringAsFixed(0)} kg",
                   ),
 
                   InfoRow(
-                    title: "Tara Total do Beg",
+                    title: "Tara Total dos Begs",
                     value: "${dados.taraBeg.toStringAsFixed(0)} kg",
                   ),
                 ],
@@ -170,7 +170,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   const SizedBox(height: 10),
 
                   InfoRowSaca(
-                    title:  "Quantidade de Sacas (Liq)",
+                    title:  "Total de Sacas (Liq)",
                     value: "${calcularSacas(dados.pesoTotal - dados.taraBeg)["quantidadeSacas"]} Sc",
                     value2: "${calcularSacas(dados.pesoTotal - dados.taraBeg)["kgRestante"].toStringAsFixed(0)} kg",
                   ),
@@ -187,7 +187,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   ),
 
                   InfoRowSaca(
-                    title: "Quantidade Encostado (Liq)",
+                    title: "Total de Sacas Encostado (Liq)",
                     value: "${calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe)))["quantidadeSacas"]} Sc",
                     value2: "${calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe)))["kgRestante"].toStringAsFixed(0)} kg",
                   ),
@@ -212,7 +212,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "% Peso da Pilagem",
+                    "Divisão da Pilagem",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
 

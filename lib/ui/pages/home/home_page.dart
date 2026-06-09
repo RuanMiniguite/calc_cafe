@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TitleCard(title: "Informações da Pilagem"),
+            TitleCard(title: "Informações"),
             SizedBox(height: 12),
             MoneyField(
               title: "Preço do Café",
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 12),
             WeightField(
               controller: taraController,
-              title: "Tara do Beg (kg)",
+              title: "Tara total dos Begs (kg)",
               icon: Icons.scale,
               onChanged: (_) => salvarCampos(),
             ),
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                 decimal: true,
               ),
               decoration: InputDecoration(
-                labelText: "% do Colono",
+                labelText: "% da Divisão",
                 suffixText: '%',
                 prefixIcon: const Icon(Icons.percent),
                 filled: true,
