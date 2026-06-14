@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
 
     super.dispose();
   }
-  
+
   // =========================
   // TELA
   // =========================
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
             Text('Pilagem de Café'),
           ],
         ),
-        backgroundColor: const Color.fromARGB(200, 175, 135, 100),
+        backgroundColor: Color.fromARGB(200, 175, 135, 100),
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
@@ -103,14 +103,25 @@ class _HomePageState extends State<HomePage> {
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
               ),
+              cursorColor: Color.fromARGB(200, 175, 135, 100),
               decoration: InputDecoration(
                 labelText: "% da Divisão",
                 suffixText: '%',
                 prefixIcon: const Icon(Icons.percent),
                 filled: true,
                 fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(
+                    color: Color.fromARGB(200, 175, 135, 100),
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
+                ),
+                floatingLabelStyle: TextStyle(
+                  color: Color.fromARGB(255, 75, 37, 1),
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -118,10 +129,10 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 24),
 
             TitleCard(title: "Pesos dos Begs"),
-            
+
             SizedBox(height: 8),
 
-             ListView.builder(
+            ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: pesosBeg.length,
@@ -151,17 +162,15 @@ class _HomePageState extends State<HomePage> {
               onPressed: adicionarBeg,
               icon: const Icon(Icons.add),
               label: const Text("Adicionar Beg"),
-               style: OutlinedButton.styleFrom(
-                  foregroundColor: Color.fromARGB(200, 175, 135, 100),
-                  side: BorderSide(color: Color.fromARGB(200, 175, 135, 100)),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                 ),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Color.fromARGB(200, 175, 135, 100),
+                side: BorderSide(color: Color.fromARGB(200, 175, 135, 100)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
             ),
-            
-
-            ],
+          ],
         ),
       ),
 
@@ -171,7 +180,6 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-
               SizedBox(
                 width: double.infinity,
                 height: 56,
@@ -207,18 +215,19 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       Icon(Icons.calculate_outlined, color: Colors.white),
                       SizedBox(width: 5),
-                      Text("Calcular Pilagem",
+                      Text(
+                        "Calcular Pilagem",
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
                       ),
-                    ]
-                  )
+                    ],
+                  ),
                 ),
               ),
-            ]
+            ],
           ),
         ),
       ),

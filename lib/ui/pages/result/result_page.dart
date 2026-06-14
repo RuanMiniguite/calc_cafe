@@ -1,6 +1,7 @@
 import 'package:calc_cafe/model/pilagem_model.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row_saca.dart';
+import 'package:calc_cafe/ui/pages/result/pesos_begs_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -41,7 +42,26 @@ class _ResultadoPageState extends State<ResultadoPage> {
         foregroundColor: Colors.white,
       ),
 
-      body: ListView(
+      body: PageView(
+  children: [
+    _paginaResultado(),
+
+    PesosBegsPage(
+      pilagem: dados,
+    ),
+  ],
+),
+    );
+  }
+
+  Widget _paginaResultado() {
+  final valorTotalPilagem = calcularValorPilagem(
+    dados.pesoTotal,
+    dados.taraBeg,
+    dados.valorPilagem,
+  );
+
+  return ListView(
         padding: const EdgeInsets.all(20),
         children: [
 
@@ -239,9 +259,8 @@ class _ResultadoPageState extends State<ResultadoPage> {
             ),
           ),
         ],
-      ),
-    );
-  }
+      );
+}
 
   Map<String, dynamic> calcularSacas(double peso) {
     int quantidadeSacas = (peso / 60).floor();

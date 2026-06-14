@@ -19,6 +19,7 @@ class MoneyField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       onChanged: onChanged,
+      cursorColor: Color.fromARGB(200, 175, 135, 100),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       decoration: InputDecoration(
         labelText: title,
@@ -26,9 +27,19 @@ class MoneyField extends StatelessWidget {
         prefixIcon: Icon(icon),
         filled: true,
         fillColor: Colors.white,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: Color.fromARGB(200, 175, 135, 100),
+          )
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
         ),
+        floatingLabelStyle: TextStyle(
+          color: Color.fromARGB(255, 75, 37, 1),
+          fontWeight: FontWeight.bold
+        )
       ),
     );
   }
