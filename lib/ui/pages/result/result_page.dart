@@ -2,6 +2,7 @@ import 'package:calc_cafe/model/pilagem_model.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row_saca.dart';
 import 'package:calc_cafe/ui/pages/result/pesos_begs_page.dart';
+import 'package:calc_cafe/utils/calculate.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -19,7 +20,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final valorTotalPilagem = calcularValorPilagem(
+    final valorTotalPilagem = Calculate.calcularValorPilagem(
       dados.pesoTotal,
       dados.taraBeg,
       dados.valorPilagem,
@@ -55,7 +56,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
   }
 
   Widget _paginaResultado() {
-  final valorTotalPilagem = calcularValorPilagem(
+  final valorTotalPilagem = Calculate.calcularValorPilagem(
     dados.pesoTotal,
     dados.taraBeg,
     dados.valorPilagem,
@@ -104,7 +105,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRow(
                     title: "Valor de 1kg Café",
-                    value: "R\$ ${valor1kgcafe(dados.precoCafe).toStringAsFixed(2)}",
+                    value: "R\$ ${Calculate.valor1kgcafe(dados.precoCafe).toStringAsFixed(2)}",
                   ),
 
                   InfoRow(
@@ -114,7 +115,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRow(
                     title: "Valor da Pilagem 1kg",
-                    value: "R\$ ${valorPilagem1kg(dados.valorPilagem).toStringAsFixed(2)}",
+                    value: "R\$ ${Calculate.valorPilagem1kg(dados.valorPilagem).toStringAsFixed(2)}",
                   ),
                 ],
               ),
@@ -154,7 +155,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRow(
                     title: "Rendimento",
-                    value: rendimento(
+                    value: Calculate.rendimento(
                       dados.quantidadeSacos,
                       dados.pesoTotal,
                       dados.taraBeg,
@@ -203,8 +204,8 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRowSaca(
                     title:  "Total de Sacas (Liq)",
-                    value: "${calcularSacas(dados.pesoTotal - dados.taraBeg)["quantidadeSacas"]} Sc",
-                    value2: "${calcularSacas(dados.pesoTotal - dados.taraBeg)["kgRestante"].toStringAsFixed(0)} kg",
+                    value: "${Calculate.calcularSacas(dados.pesoTotal - dados.taraBeg)["quantidadeSacas"]} Sc",
+                    value2: "${Calculate.calcularSacas(dados.pesoTotal - dados.taraBeg)["kgRestante"].toStringAsFixed(0)} kg",
                   ),
 
                   InfoRow(
@@ -214,14 +215,14 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRowSaca(
                     title: "Peso Total da Pilagem",
-                    value: "${calcularSacas(valorTotalPilagem / valor1kgcafe(dados.precoCafe))["quantidadeSacas"]} Sc",
-                    value2: "${calcularSacas(valorTotalPilagem / valor1kgcafe(dados.precoCafe))["kgRestante"].toStringAsFixed(0)} kg",
+                    value: "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["quantidadeSacas"]} Sc",
+                    value2: "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["kgRestante"].toStringAsFixed(0)} kg",
                   ),
 
                   InfoRowSaca(
                     title: "Total de Sacas Encostado (Liq)",
-                    value: "${calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe)))["quantidadeSacas"]} Sc",
-                    value2: "${calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe)))["kgRestante"].toStringAsFixed(0)} kg",
+                    value: "${Calculate.calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["quantidadeSacas"]} Sc",
+                    value2: "${Calculate.calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["kgRestante"].toStringAsFixed(0)} kg",
                   ),
                 ],
               ),
@@ -261,14 +262,14 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
                   InfoRowSaca(
                     title:  "Sacas ${dados.percentualColono.toInt()}%",
-                    value: "${calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["quantidadeSacas"]} Sc",
-                    value2: "${calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                    value: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["quantidadeSacas"]} Sc",
+                    value2: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(0)} kg",
                   ),
 
                   InfoRowSaca(
                     title:  "Sacas ${100 - dados.percentualColono.toInt()}%",
-                    value: "${calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["quantidadeSacas"]} Sc",
-                    value2: "${calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                    value: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["quantidadeSacas"]} Sc",
+                    value2: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(0)} kg",
                   ),
                 ],
               ),
@@ -276,29 +277,5 @@ class _ResultadoPageState extends State<ResultadoPage> {
           ),
         ],
       );
-}
-
-  Map<String, dynamic> calcularSacas(double peso) {
-    int quantidadeSacas = (peso / 60).floor();
-    double kgrestante = peso % 60;
-
-    return {"quantidadeSacas": quantidadeSacas, "kgRestante": kgrestante};
-  }
-
-  double rendimento(int qtdSaco, double pesoTotal, double tara) {
-    return qtdSaco / ((pesoTotal - tara) / 60);
-  }
-
-  double valorPilagem1kg(double valorPilagem) => valorPilagem / 60;
-
-  double valor1kgcafe(double precoCafe) => precoCafe / 60;
-
-  double calcularValorPilagem(
-    double pesoTotal,
-    double tara,
-    double valorPilagem,
-  ) {
-    double pesoLiquido = pesoTotal - tara;
-    return pesoLiquido * valorPilagem1kg(valorPilagem);
   }
 }
