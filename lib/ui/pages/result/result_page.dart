@@ -69,9 +69,13 @@ class _ResultadoPageState extends State<ResultadoPage> {
           // CARD VALORES DO DIA
           // =========================
           Card(
-            elevation: 4,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: Color.fromARGB(200, 175, 135, 100),
+                width: 1,
+              )
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -123,9 +127,13 @@ class _ResultadoPageState extends State<ResultadoPage> {
           // CARD RESUMO
           // =========================
           Card(
-            elevation: 4,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: Color.fromARGB(200, 175, 135, 100),
+                width: 1,
+              )
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -173,9 +181,13 @@ class _ResultadoPageState extends State<ResultadoPage> {
           // CARD PILAGEM
           // =========================
           Card(
-            elevation: 4,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: Color.fromARGB(200, 175, 135, 100),
+                width: 1,
+              )
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -222,9 +234,13 @@ class _ResultadoPageState extends State<ResultadoPage> {
           // CLIENTE
           // =========================
           Card(
-            elevation: 4,
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: Color.fromARGB(200, 175, 135, 100),
+                width: 1,
+              )
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
