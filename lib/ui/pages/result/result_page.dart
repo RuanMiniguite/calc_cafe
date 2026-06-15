@@ -20,12 +20,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
 
   @override
   Widget build(BuildContext context) {
-    final valorTotalPilagem = Calculate.calcularValorPilagem(
-      dados.pesoTotal,
-      dados.taraBeg,
-      dados.valorPilagem,
-    );
-
+  
     return Scaffold(
       backgroundColor: const Color(0xFFF5F1EC),
 
@@ -44,238 +39,247 @@ class _ResultadoPageState extends State<ResultadoPage> {
       ),
 
       body: PageView(
-  children: [
-    _paginaResultado(),
+        children: [
+          _paginaResultado(),
 
-    PesosBegsPage(
-      pilagem: dados,
-    ),
-  ],
-),
+          PesosBegsPage(pilagem: dados),
+        ],
+      ),
     );
   }
 
   Widget _paginaResultado() {
-  final valorTotalPilagem = Calculate.calcularValorPilagem(
-    dados.pesoTotal,
-    dados.taraBeg,
-    dados.valorPilagem,
-  );
+    final pesoTotalLiq = Calculate.pesoTotalLiq(dados.pesoTotal, dados.taraBeg);
+    final valorTotalPilagem = Calculate.calcularValorPilagem(
+      pesoTotalLiq,
+      dados.valorPilagem,
+    );
 
-  return ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-
-          // =========================
-          // CARD VALORES DO DIA
-          // =========================
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Color.fromARGB(200, 175, 135, 100),
-                width: 1,
-              )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  const Icon(Icons.analytics, size: 70, color: Colors.brown),
-
-                  const SizedBox(height: 5),
-
-                  const Text(
-                    "Valores do dia",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  InfoRow(
-                    title: "Data do Dia",
-                    value:  DateFormat('dd/MM/yyyy').format(DateTime.now()),
-                  ),
-
-                  InfoRow(
-                    title: "Valor da Saca de Café",
-                    value: "R\$ ${dados.precoCafe.toStringAsFixed(2)}",
-                  ),
-
-                  InfoRow(
-                    title: "Valor de 1kg Café",
-                    value: "R\$ ${Calculate.valor1kgcafe(dados.precoCafe).toStringAsFixed(2)}",
-                  ),
-
-                  InfoRow(
-                    title: "Valor da Pilagem",
-                    value: "R\$ ${dados.valorPilagem.toStringAsFixed(2)}",
-                  ),
-
-                  InfoRow(
-                    title: "Valor da Pilagem 1kg",
-                    value: "R\$ ${Calculate.valorPilagem1kg(dados.valorPilagem).toStringAsFixed(2)}",
-                  ),
-                ],
-              ),
+    return ListView(
+      padding: const EdgeInsets.all(20),
+      children: [
+        // =========================
+        // CARD VALORES DO DIA
+        // =========================
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Color.fromARGB(200, 175, 135, 100),
+              width: 1,
             ),
           ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                const Icon(Icons.analytics, size: 70, color: Colors.brown),
 
-          const SizedBox(height: 20),
+                const SizedBox(height: 5),
 
-          // =========================
-          // CARD RESUMO
-          // =========================
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Color.fromARGB(200, 175, 135, 100),
-                width: 1,
-              )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Resumo",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+                const Text(
+                  "Valores do dia",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
 
-                  const SizedBox(height: 10),
+                const SizedBox(height: 20),
 
-                  InfoRow(
-                    title: "Quantidade de Sacos",
-                    value: "${dados.quantidadeSacos} sc",
-                  ),
+                InfoRow(
+                  title: "Data do Dia",
+                  value: DateFormat('dd/MM/yyyy').format(DateTime.now()),
+                ),
 
-                  InfoRow(
-                    title: "Rendimento",
-                    value: Calculate.rendimento(
-                      dados.quantidadeSacos,
-                      dados.pesoTotal,
-                      dados.taraBeg,
-                    ).toStringAsFixed(2),
-                  ),
+                InfoRow(
+                  title: "Valor da Saca de Café",
+                  value: "R\$ ${dados.precoCafe.toStringAsFixed(2)}",
+                ),
 
-                  InfoRow(
-                    title: "Peso Total (Bruto)",
-                    value: "${dados.pesoTotal.toStringAsFixed(0)} kg",
-                  ),
+                InfoRow(
+                  title: "Valor de 1kg Café",
+                  value:
+                      "R\$ ${Calculate.valor1kgcafe(dados.precoCafe).toStringAsFixed(2)}",
+                ),
 
-                  InfoRow(
-                    title: "Tara Total dos Begs",
-                    value: "${dados.taraBeg.toStringAsFixed(0)} kg",
-                  ),
-                ],
-              ),
+                InfoRow(
+                  title: "Valor da Pilagem",
+                  value: "R\$ ${dados.valorPilagem.toStringAsFixed(2)}",
+                ),
+
+                InfoRow(
+                  title: "Valor da Pilagem 1kg",
+                  value:
+                      "R\$ ${Calculate.valorPilagem1kg(dados.valorPilagem).toStringAsFixed(2)}",
+                ),
+              ],
             ),
           ),
+        ),
 
-          const SizedBox(height: 20),
+        const SizedBox(height: 20),
 
-          // =========================
-          // CARD PILAGEM
-          // =========================
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Color.fromARGB(200, 175, 135, 100),
-                width: 1,
-              )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Pilagem",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-
-                  const SizedBox(height: 10),
-
-                  InfoRowSaca(
-                    title:  "Total de Sacas (Liq)",
-                    value: "${Calculate.calcularSacas(dados.pesoTotal - dados.taraBeg)["quantidadeSacas"]} Sc",
-                    value2: "${Calculate.calcularSacas(dados.pesoTotal - dados.taraBeg)["kgRestante"].toStringAsFixed(0)} kg",
-                  ),
-
-                  InfoRow(
-                    title: "Valor Total da Pilagem",
-                    value: "R\$ ${valorTotalPilagem.toStringAsFixed(2)}",
-                  ),
-
-                  InfoRowSaca(
-                    title: "Peso Total da Pilagem",
-                    value: "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["quantidadeSacas"]} Sc",
-                    value2: "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["kgRestante"].toStringAsFixed(0)} kg",
-                  ),
-
-                  InfoRowSaca(
-                    title: "Total de Sacas Encostado (Liq)",
-                    value: "${Calculate.calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["quantidadeSacas"]} Sc",
-                    value2: "${Calculate.calcularSacas((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["kgRestante"].toStringAsFixed(0)} kg",
-                  ),
-                ],
-              ),
+        // =========================
+        // CARD RESUMO
+        // =========================
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Color.fromARGB(200, 175, 135, 100),
+              width: 1,
             ),
           ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Resumo",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
 
-          const SizedBox(height: 20),
+                const SizedBox(height: 10),
 
-          // =========================
-          // CLIENTE
-          // =========================
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: BorderSide(
-                color: Color.fromARGB(200, 175, 135, 100),
-                width: 1,
-              )
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Divisão da Pilagem",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+                InfoRow(
+                  title: "Quantidade de Sacos",
+                  value: "${dados.quantidadeSacos} sc",
+                ),
 
-                  const SizedBox(height: 10),
+                InfoRow(
+                  title: "Rendimento",
+                  value: Calculate.rendimento(
+                    dados.quantidadeSacos,
+                    dados.pesoTotal,
+                    dados.taraBeg,
+                  ).toStringAsFixed(2),
+                ),
 
-                  InfoRow(
-                    title: "Valor da divisão %",
-                    value: "${dados.percentualColono.toStringAsFixed(0)}%",
-                  ),
+                InfoRow(
+                  title: "Peso Total (Bruto)",
+                  value: "${dados.pesoTotal.toStringAsFixed(0)} kg",
+                ),
 
-                  InfoRowSaca(
-                    title:  "Sacas ${dados.percentualColono.toInt()}%",
-                    value: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["quantidadeSacas"]} Sc",
-                    value2: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(0)} kg",
-                  ),
-
-                  InfoRowSaca(
-                    title:  "Sacas ${100 - dados.percentualColono.toInt()}%",
-                    value: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["quantidadeSacas"]} Sc",
-                    value2: "${Calculate.calcularSacas(((dados.pesoTotal - dados.taraBeg) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(0)} kg",
-                  ),
-                ],
-              ),
+                InfoRow(
+                  title: "Tara Total dos Begs",
+                  value: "${dados.taraBeg.toStringAsFixed(0)} kg",
+                ),
+              ],
             ),
           ),
-        ],
-      );
+        ),
+
+        const SizedBox(height: 20),
+
+        // =========================
+        // CARD PILAGEM
+        // =========================
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Color.fromARGB(200, 175, 135, 100),
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Pilagem",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+
+                const SizedBox(height: 10),
+
+                InfoRowSaca(
+                  title: "Total de Sacas (Liq)",
+                  value:
+                      "${Calculate.calcularSacas(pesoTotalLiq)["quantidadeSacas"]} Sc",
+                  value2:
+                      "${Calculate.calcularSacas(pesoTotalLiq)["kgRestante"].toStringAsFixed(0)} kg",
+                ),
+
+                InfoRow(
+                  title: "Valor Total da Pilagem",
+                  value: "R\$ ${valorTotalPilagem.toStringAsFixed(2)}",
+                ),
+
+                InfoRowSaca(
+                  title: "Peso Total da Pilagem",
+                  value:
+                      "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["quantidadeSacas"]} Sc",
+                  value2:
+                      "${Calculate.calcularSacas(valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))["kgRestante"].toStringAsFixed(0)} kg",
+                ),
+
+                InfoRowSaca(
+                  title: "Total de Sacas Encostado (Liq)",
+                  value:
+                      "${Calculate.calcularSacas((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["quantidadeSacas"]} Sc",
+                  value2:
+                      "${Calculate.calcularSacas((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe)))["kgRestante"].toStringAsFixed(0)} kg",
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 20),
+
+        // =========================
+        // CLIENTE
+        // =========================
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: Color.fromARGB(200, 175, 135, 100),
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Divisão da Pilagem",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+
+                const SizedBox(height: 10),
+
+                InfoRow(
+                  title: "Valor da divisão %",
+                  value: "${dados.percentualColono.toStringAsFixed(0)}%",
+                ),
+
+                InfoRowSaca(
+                  title: "Sacas ${dados.percentualColono.toInt()}%",
+                  value:
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["quantidadeSacas"]} Sc",
+                  value2:
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                ),
+
+                InfoRowSaca(
+                  title: "Sacas ${100 - dados.percentualColono.toInt()}%",
+                  value:
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["quantidadeSacas"]} Sc",
+                  value2:
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
