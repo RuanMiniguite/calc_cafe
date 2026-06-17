@@ -232,7 +232,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
         const SizedBox(height: 20),
 
         // =========================
-        // CLIENTE
+        // DIVISÃO DA PILAGEM
         // =========================
         Card(
           elevation: 0,
@@ -265,7 +265,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   value:
                       "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["quantidadeSacas"]} Sc",
                   value2:
-                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * (dados.percentualColono / 100))["kgRestante"].toStringAsFixed(2)} kg",
                 ),
 
                 InfoRowSaca(
@@ -273,7 +273,7 @@ class _ResultadoPageState extends State<ResultadoPage> {
                   value:
                       "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["quantidadeSacas"]} Sc",
                   value2:
-                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(0)} kg",
+                      "${Calculate.calcularSacas(((pesoTotalLiq) - (valorTotalPilagem / Calculate.valor1kgcafe(dados.precoCafe))) * ((100 - dados.percentualColono) / 100))["kgRestante"].toStringAsFixed(2)} kg",
                 ),
               ],
             ),

@@ -455,11 +455,4 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
       ),
     );
   }
-
-  String _formatarSacas(double peso) {
-    final sacas = (peso / 60).floor();
-    final kg = peso % 60;
-
-    return "$sacas Sc ${kg.toStringAsFixed(0)} kg";
-  }
 }
