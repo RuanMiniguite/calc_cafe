@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
         foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             TitleCard(title: "Informações"),
@@ -103,30 +103,15 @@ class _HomePageState extends State<HomePage> {
               keyboardType: const TextInputType.numberWithOptions(
                 decimal: true,
               ),
-              cursorColor: Color.fromARGB(200, 175, 135, 100),
               decoration: InputDecoration(
                 labelText: "% da Divisão",
                 suffixText: '%',
                 prefixIcon: const Icon(Icons.percent),
                 filled: true,
-                fillColor: Colors.white,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: BorderSide(
-                    color: Color.fromARGB(200, 175, 135, 100),
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                floatingLabelStyle: TextStyle(
-                  color: Color.fromARGB(255, 75, 37, 1),
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
 
-            SizedBox(height: 24),
+            SizedBox(height: 28),
 
             TitleCard(title: "Pesos dos Begs"),
 
@@ -144,9 +129,9 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: WeightField(
                           controller: pesosBeg[index],
-                          title: index == 0 
-                            ? "Peso da Balança"
-                            : "Peso do Beg $index",
+                          title: index == 0
+                              ? "Peso da Balança"
+                              : "Peso do Beg $index",
                           icon: Icons.scale,
                           onChanged: (_) => salvarCampos(),
                         ),

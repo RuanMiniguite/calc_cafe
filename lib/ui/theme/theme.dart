@@ -28,14 +28,11 @@ class ThemeApp {
       ),
 
       cardTheme: CardThemeData(
-        color:  Color.fromARGB(255, 253, 252, 249), // Cor de fundo do Card
+        color: Color.fromARGB(255, 253, 252, 249), // Cor de fundo do Card
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: Color.fromARGB(200, 175, 135, 100),
-            width: 1,
-          ),
+          side: BorderSide(color: Color.fromARGB(200, 175, 135, 100), width: 1),
         ),
       ),
 
@@ -49,6 +46,29 @@ class ThemeApp {
         behavior: SnackBarBehavior.floating,
         elevation: 8,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+
+      textSelectionTheme: const TextSelectionThemeData(
+        cursorColor: Color.fromARGB(200, 175, 135, 100),
+      ),
+
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Colors.white,
+
+        border: const OutlineInputBorder(),
+
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
+            color: Color.fromARGB(200, 175, 135, 100),
+            width: 2,
+          ),
+        ),
+
+        floatingLabelStyle: const TextStyle(
+          color: Colors.brown,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }

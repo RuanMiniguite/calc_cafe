@@ -85,11 +85,14 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
     });
   }
 
-  Color get colorBorder {
-  return diferenca.round() == 0
-      ? Colors.green
-      : Colors.red;
-  }
+  bool get pesoCorreto => diferenca.round() == 0;
+
+  Color get colorBorder =>
+      pesoCorreto ? Colors.green : Colors.red;
+
+  Color get backgroundColor => pesoCorreto
+      ? const Color.fromARGB(255, 242, 253, 246)
+      : const Color.fromARGB(255, 255, 234, 234);
   
   @override
   Widget build(BuildContext context) {
@@ -349,7 +352,6 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                                 decoration: const InputDecoration(
                                   labelText: "Peso Bruto do Beg",
                                   suffixText: "kg",
-                                  border: OutlineInputBorder(),
                                 ),
                                 onChanged: (value) {
                                   setState(() {
@@ -407,6 +409,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
               borderRadius: BorderRadius.circular(16),
               side: BorderSide(color: colorBorder, width: 2),
             ),
+            color: backgroundColor,
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
