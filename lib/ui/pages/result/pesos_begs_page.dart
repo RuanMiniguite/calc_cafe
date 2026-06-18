@@ -139,7 +139,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                         label: const Text("Adicionar"),
                       ),
 
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 5),
 
                       if (pesosBegs.isNotEmpty)
                         TextButton.icon(
