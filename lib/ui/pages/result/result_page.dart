@@ -22,8 +22,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
   Widget build(BuildContext context) {
   
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F1EC),
-
       appBar: AppBar(
         titleSpacing: 0,
         title: const Row(
@@ -62,14 +60,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
         // CARD VALORES DO DIA
         // =========================
         Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: Color.fromARGB(200, 175, 135, 100),
-              width: 1,
-            ),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -122,14 +112,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
         // CARD RESUMO
         // =========================
         Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: Color.fromARGB(200, 175, 135, 100),
-              width: 1,
-            ),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -176,14 +158,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
         // CARD PILAGEM
         // =========================
         Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: Color.fromARGB(200, 175, 135, 100),
-              width: 1,
-            ),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -235,14 +209,6 @@ class _ResultadoPageState extends State<ResultadoPage> {
         // DIVISÃO DA PILAGEM
         // =========================
         Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-            side: BorderSide(
-              color: Color.fromARGB(200, 175, 135, 100),
-              width: 1,
-            ),
-          ),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

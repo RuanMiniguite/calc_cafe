@@ -85,10 +85,16 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
     });
   }
 
+  Color get colorBorder {
+  debugPrint("______ Diferença: $diferenca");
+  return diferenca.round() == 0
+      ? Colors.green
+      : Colors.red;
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F1EC),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -398,13 +404,9 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
           const SizedBox(height: 20),
 
           Card(
-            elevation: 0,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-              side: const BorderSide(
-                color: Color.fromARGB(200, 175, 135, 100),
-                width: 1,
-              ),
+              borderRadius: BorderRadius.circular(16),
+              side: BorderSide(color: colorBorder, width: 2),
             ),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -426,7 +428,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                   ),
 
                   const Divider(),
-
+                
                   _infoRow("Diferença", "${diferenca.toStringAsFixed(0)} kg"),
                 ],
               ),

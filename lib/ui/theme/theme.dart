@@ -6,7 +6,6 @@ class ThemeApp {
       fontFamily: 'Roboto',
       appBarTheme: const AppBarTheme(
         elevation: 0,
-        backgroundColor: Color.fromARGB(200, 175, 135, 100),
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
         titleTextStyle: TextStyle(
@@ -17,6 +16,8 @@ class ThemeApp {
         ),
       ),
 
+      scaffoldBackgroundColor: Color.fromARGB(255, 255, 255, 255),
+
       textTheme: const TextTheme(
         displayLarge: TextStyle(
           fontSize: 25,
@@ -26,7 +27,17 @@ class ThemeApp {
         ),
       ),
 
-      scaffoldBackgroundColor: const Color.fromRGBO(245, 241, 236, 1),
+      cardTheme: CardThemeData(
+        color:  Color.fromARGB(255, 253, 252, 249), // Cor de fundo do Card
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            color: Color.fromARGB(200, 175, 135, 100),
+            width: 1,
+          ),
+        ),
+      ),
 
       snackBarTheme: SnackBarThemeData(
         backgroundColor: const Color(0xFF6F4E37),
