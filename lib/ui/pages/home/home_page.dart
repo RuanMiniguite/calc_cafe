@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       IconButton(
                         onPressed: () => removerBeg(index),
-                        icon: const Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete_outline, color: Colors.red),
                       ),
                     ],
                   ),
