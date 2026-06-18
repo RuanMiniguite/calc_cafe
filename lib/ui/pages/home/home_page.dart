@@ -144,7 +144,9 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: WeightField(
                           controller: pesosBeg[index],
-                          title: "Peso do Beg ${index + 1}",
+                          title: index == 0 
+                            ? "Peso da Balança"
+                            : "Peso do Beg $index",
                           icon: Icons.scale,
                           onChanged: (_) => salvarCampos(),
                         ),

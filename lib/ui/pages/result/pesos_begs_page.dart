@@ -86,7 +86,6 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
   }
 
   Color get colorBorder {
-  debugPrint("______ Diferença: $diferenca");
   return diferenca.round() == 0
       ? Colors.green
       : Colors.red;
@@ -250,7 +249,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                                       100,
                                     ),
                                     child: Text(
-                                      "${index + 1}",
+                                      "$index",
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -262,7 +261,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
 
                                   Expanded(
                                     child: Text(
-                                      "Beg ${index + 1}",
+                                      "Beg $index",
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -348,7 +347,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                                       decimal: true,
                                     ),
                                 decoration: const InputDecoration(
-                                  labelText: "Peso do Beg",
+                                  labelText: "Peso Bruto do Beg",
                                   suffixText: "kg",
                                   border: OutlineInputBorder(),
                                 ),
