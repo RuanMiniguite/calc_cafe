@@ -1,4 +1,4 @@
-import 'package:calc_cafe/model/pilagem_model.dart';
+ import 'package:calc_cafe/model/pilagem_model.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row.dart';
 import 'package:calc_cafe/ui/components/widgets/info_row_saca.dart';
 import 'package:calc_cafe/ui/pages/result/pesos_begs_page.dart';

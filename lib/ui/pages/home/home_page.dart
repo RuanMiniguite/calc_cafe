@@ -1,5 +1,6 @@
 import 'package:calc_cafe/model/pilagem_model.dart';
 import 'package:calc_cafe/ui/components/widgets/integer_field.dart';
+import 'package:calc_cafe/ui/components/widgets/percent_field.dart';
 import 'package:calc_cafe/ui/components/widgets/weigh_field.dart';
 import 'package:calc_cafe/ui/pages/result/result_page.dart';
 import 'package:flutter/material.dart';
@@ -97,18 +98,10 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 12),
 
-            TextFormField(
+            PercentField(
               controller: percentualColonoController,
+              title: "% da Divisão",
               onChanged: (_) => salvarCampos(),
-              keyboardType: const TextInputType.numberWithOptions(
-                decimal: true,
-              ),
-              decoration: InputDecoration(
-                labelText: "% da Divisão",
-                suffixText: '%',
-                prefixIcon: const Icon(Icons.percent),
-                filled: true,
-              ),
             ),
 
             SizedBox(height: 28),
@@ -138,24 +131,15 @@ class _HomePageState extends State<HomePage> {
                       ),
                       IconButton(
                         onPressed: () => removerBeg(index),
-                        icon: const Icon(Icons.delete_outline, color: Colors.red),
+                        icon: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.red,
+                        ),
                       ),
                     ],
                   ),
                 );
               },
-            ),
-            OutlinedButton.icon(
-              onPressed: adicionarBeg,
-              icon: const Icon(Icons.add),
-              label: const Text("Adicionar Beg"),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: Color.fromARGB(200, 175, 135, 100),
-                side: BorderSide(color: Color.fromARGB(200, 175, 135, 100)),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
             ),
           ],
         ),
@@ -167,51 +151,51 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: double.infinity,
-                height: 56,
-                child: OutlinedButton.icon(
-                  onPressed: limparCampos,
-                  icon: const Icon(Icons.cleaning_services),
-                  label: const Text("Limpar Campos"),
-                  style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.red,
-                    side: const BorderSide(color: Colors.red),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 12),
-
-              SizedBox(
-                width: double.infinity,
-                height: 56,
-                child: ElevatedButton(
-                  onPressed: calcularPilagem,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(200, 175, 135, 100),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.calculate_outlined, color: Colors.white),
-                      SizedBox(width: 5),
-                      Text(
-                        "Calcular Pilagem",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: adicionarBeg,
+                      icon: const Icon(Icons.add),
+                      label: const Text("Adicionar Beg"),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: const Color(0xFF6F4E37),
+                        side: const BorderSide(color: Color(0xFF6F4E37)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
                       ),
-                    ],
+                    ),
                   ),
+
+                  const SizedBox(width: 10),
+
+                  Expanded(
+                    child: OutlinedButton.icon(
+                      onPressed: limparCampos,
+                      icon: const Icon(Icons.cleaning_services),
+                      label: const Text("Limpar"),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.red,
+                        side: const BorderSide(color: Colors.red),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
+              SizedBox(
+                height: 56,
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: calcularPilagem,
+                  icon: const Icon(Icons.calculate_outlined),
+                  label: const Text("Calcular Pilagem"),
                 ),
               ),
             ],

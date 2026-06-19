@@ -87,13 +87,18 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
 
   bool get pesoCorreto => diferenca.round() == 0;
 
-  Color get colorBorder =>
-      pesoCorreto ? Colors.green : Colors.red;
+  Color get colorBorder => pesoCorreto ? Colors.green : Colors.red;
 
-  Color get backgroundColor => pesoCorreto
-      ? const Color.fromARGB(255, 242, 253, 246)
-      : const Color.fromARGB(255, 255, 234, 234);
-  
+  Color get backgroundColor {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    if (pesoCorreto) {
+      return isDark ? const Color(0xFF2E4A34) : const Color(0xFFF2FDF6);
+    }
+
+    return isDark ? const Color(0xFF5A2B2B) : const Color(0xFFFFEAEA);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -414,9 +419,15 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     "Total",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : const Color(0xFF212121),
+                    ),
                   ),
 
                   _infoRow(
@@ -430,7 +441,7 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
                   ),
 
                   const Divider(),
-                
+
                   _infoRow("Diferença", "${diferenca.toStringAsFixed(0)} kg"),
                 ],
               ),
@@ -444,6 +455,10 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
   }
 
   Widget _infoRow(String titulo, String valor) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    final textColor = isDark ? Colors.white : const Color(0xFF212121);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
@@ -451,10 +466,13 @@ class _PesosBegsPageState extends State<PesosBegsPage> {
           Expanded(
             child: Text(
               titulo,
-              style: const TextStyle(fontWeight: FontWeight.w600),
+              style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
             ),
           ),
-          Text(valor, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(
+            valor,
+            style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
