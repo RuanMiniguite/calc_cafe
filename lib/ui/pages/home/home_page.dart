@@ -155,12 +155,12 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: adicionarBeg,
-                      icon: const Icon(Icons.add),
-                      label: const Text("Adicionar Beg"),
+                      onPressed: limparCampos,
+                      icon: const Icon(Icons.cleaning_services),
+                      label: const Text("Limpar"),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: const Color(0xFF6F4E37),
-                        side: const BorderSide(color: Color(0xFF6F4E37)),
+                        foregroundColor: Colors.red,
+                        side: const BorderSide(color: Colors.red),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
@@ -172,12 +172,12 @@ class _HomePageState extends State<HomePage> {
 
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: limparCampos,
-                      icon: const Icon(Icons.cleaning_services),
-                      label: const Text("Limpar"),
+                      onPressed: adicionarBeg,
+                      icon: const Icon(Icons.add),
+                      label: const Text("Adicionar Beg"),
                       style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.red,
-                        side: const BorderSide(color: Colors.red),
+                        foregroundColor: const Color(0xFF6F4E37),
+                        side: const BorderSide(color: Color(0xFF6F4E37)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
